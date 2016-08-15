@@ -7,7 +7,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 
 /**
- * Created by lnakhang on 8/3/2016.
+ * Created by cmtien on 8/15/16.
  */
 public class PhanTich_XML extends DefaultHandler {
     public ArrayList<FileHoSo> fileHoSoList = new ArrayList<>();
@@ -19,7 +19,9 @@ public class PhanTich_XML extends DefaultHandler {
     String maCSKCB = "";
     String ngayLap = "";
     String soLuongHoSo;
-
+    public ArrayList<FileHoSo> getFileHoSoList() {
+        return fileHoSoList;
+    }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

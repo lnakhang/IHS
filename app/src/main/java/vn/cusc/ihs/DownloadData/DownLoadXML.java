@@ -9,6 +9,7 @@ import org.xml.sax.InputSource;
 
 import java.io.InputStream;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -33,7 +34,6 @@ public class DownLoadXML {
             PhanTich_XML obj = new PhanTich_XML();
             // tien hanh phan tich
             parser.parse(src, obj);
-
             return obj;
         } catch (Exception ex) {
             return null;
