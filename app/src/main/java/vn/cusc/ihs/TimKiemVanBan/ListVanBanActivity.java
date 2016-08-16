@@ -122,7 +122,7 @@ public class ListVanBanActivity extends Fragment {
                 progressDialog = new ProgressDialog(getActivity());
                 progressDialog.setIndeterminate(true);
             }
-            progressDialog.setMessage("Đang tải dữ liệu, Vui lòng chờ giây lác!");
+            progressDialog.setMessage("Vui lòng chờ giây lác!");
             progressDialog.show();
         }
 

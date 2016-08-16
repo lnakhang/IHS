@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -97,11 +98,17 @@ public class DotKhamActivity extends Fragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
+            if(hoSo != null){
             XuLyDuLieu xuly = new XuLyDuLieu();
             xuly.getXMLDetail(hoSo);
             progressDialog.hide();
             Intent i = new Intent(getActivity(), ThongTinKhamBenh.class);
-            startActivity(i);
+            startActivity(i);}
+            else
+            {
+                progressDialog.hide();
+                Toast.makeText(getActivity(), "Không lấy được dữ liệu, thử lại! ", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
