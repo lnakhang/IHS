@@ -17,7 +17,7 @@ public class VanBanDetail extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_van_ban_detail);
-
+        getSupportActionBar().hide();
         init();
         Intent intent = getIntent();
         String kyHieuVB = intent.getStringExtra("kyHieuVB");

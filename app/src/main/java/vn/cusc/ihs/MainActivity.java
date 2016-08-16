@@ -1,6 +1,7 @@
 package vn.cusc.ihs;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,30 +12,23 @@ import vn.cusc.ihs.TimKiemVanBan.ListVanBanActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    ParseBase64 par;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
 
-        ((Button)findViewById(R.id.btnVanbanPhapLuat)).setOnClickListener(new View.OnClickListener() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, ListVanBanActivity.class);
-                startActivity(i);
-              //  finish();
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, Menu.class);
+                startActivity(intent);
+                finish();
             }
-        });
-
-        ((Button)findViewById(R.id.btnLichSuKham)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, DotKhamActivity.class);
-                startActivity(i);
-            }
-        });
+        }, 3000);
 
     }
 

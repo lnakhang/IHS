@@ -1,27 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context="vn.cusc.ihs.MainActivity">
+    android:background="#2ca99c"
+    android:padding="10dp"
+    android:layout_height="match_parent">
 
-
-    <Button
+<TextView
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="#fff"
+        android:text="Infomation \nHospital System"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Xem lịch sử khám"
-        android:id="@+id/btnLichSuKham" />
+        android:gravity="center" />
 
-    <Button
+    <ImageView
+        android:padding="10dp"
+        android:src="@drawable/logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tìm kiếm văn bản pháp luật"
-        android:id="@+id/btnVanbanPhapLuat"
-        android:layout_gravity="center_vertical" />
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

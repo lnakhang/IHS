@@ -18,7 +18,7 @@ public class ListThuoc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_thuoc);
-
+        getSupportActionBar().hide();
         lstThuoc = XML_Data.phanTich_xml2.getDSChiTietThuoc();
 
         thuocAdapter = new ThuocAdapter(ListThuoc.this, lstThuoc);

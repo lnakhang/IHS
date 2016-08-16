@@ -15,7 +15,7 @@ public class ViewVanBanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_van_ban);
-
+        getSupportActionBar().hide();
         init();
 
         String myPdfUrl = "2046_BHXH_CSYT.pdf";

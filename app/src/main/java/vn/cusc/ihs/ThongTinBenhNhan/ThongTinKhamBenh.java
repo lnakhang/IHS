@@ -24,6 +24,7 @@ public class ThongTinKhamBenh extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_tin_kham_benh);
+        getSupportActionBar().hide();
         init();
 
         XMLBang1 bang1 = XML_Data.phanTich_xml1.getXMLBang1();
