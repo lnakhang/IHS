@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">IHS</string>
+    <string name="action_settings">Settings</string>
+    <string name="desc_list_item_icon">Item Icon</string>
+
+    <string-array name="nav_drawer_items">
+        <item>Thông tin khám bệnh</item>
+        <item>Văn bản pháp luật</item>
+    </string-array>
+
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_local_hospital_black_48dp</item>
+        <item>@drawable/ic_assignment_black_48dp</item>
+    </array>
 </resources>

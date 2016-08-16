@@ -1,6 +1,7 @@
 package vn.cusc.ihs.TimKiemVanBan;
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,7 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,7 +31,12 @@ import java.util.ArrayList;
 
 import vn.cusc.ihs.R;
 
-public class ListVanBanActivity extends AppCompatActivity {
+public class ListVanBanActivity extends Fragment {
+
+    public ListVanBanActivity() {
+    }
+
+
     ProgressDialog progressDialog;
     private EditText edNoiDungTimKiem;
     private TextView tvHienThiNoiDungTimKiem;
@@ -38,14 +46,17 @@ public class ListVanBanActivity extends AppCompatActivity {
     String address = "http://van-ban-phap-luat.appspot.com/json/vbpl_yte.json";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_van_ban);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        edNoiDungTimKiem = (EditText) findViewById(R.id.edNoiDungTimKiem);
-        lvDanhSachHienThi = (ListView) findViewById(R.id.lvDanhSachHienThi);
-        tvHienThiNoiDungTimKiem = (TextView) findViewById(R.id.tvHienThiNoiDungTimKiem);
+        View rootView = inflater.inflate(R.layout.activity_list_van_ban, container, false);
 
+
+        //setContentView(R.layout.activity_list_van_ban);
+
+        edNoiDungTimKiem = (EditText) rootView.findViewById(R.id.edNoiDungTimKiem);
+        lvDanhSachHienThi = (ListView) rootView.findViewById(R.id.lvDanhSachHienThi);
+        tvHienThiNoiDungTimKiem = (TextView) rootView.findViewById(R.id.tvHienThiNoiDungTimKiem);
 
 
         edNoiDungTimKiem.addTextChangedListener(new TextWatcher() {
@@ -76,11 +87,11 @@ public class ListVanBanActivity extends AppCompatActivity {
         });
 
         lvDanhSachHienThi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @TargetApi(Build.VERSION_CODES.N)
+            //@TargetApi(Build.VERSION_CODES.N)
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent intentManHinhHienThiChiTiet = new Intent(ListVanBanActivity.this, VanBanDetail.class);
+                Intent intentManHinhHienThiChiTiet = new Intent(getActivity(), VanBanDetail.class);
                 String kyHieuVB = arrayListVanBan.get(i).getKyHieuVanBan();
                 String ngayKyVB = arrayListVanBan.get(i).getNgayKyVanBan();
                 String nguoiKyVB = arrayListVanBan.get(i).getNguoiKyVanBan();
@@ -100,6 +111,7 @@ public class ListVanBanActivity extends AppCompatActivity {
 
             }
         });
+        return rootView;
     }
 
     class DownLoad extends AsyncTask<String, String, String> {
@@ -107,9 +119,10 @@ public class ListVanBanActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             if (progressDialog == null) {
-                progressDialog = new ProgressDialog(ListVanBanActivity.this);
+                progressDialog = new ProgressDialog(getActivity());
                 progressDialog.setIndeterminate(true);
             }
+            progressDialog.setMessage("Đang tải dữ liệu, Vui lòng chờ giây lác!");
             progressDialog.show();
         }
 
@@ -162,27 +175,27 @@ public class ListVanBanActivity extends AppCompatActivity {
                     //   str+= "\n"+arr.getJSONObject(i).getString("hoten") +"-hinh:" +arr.getJSONObject(i).getString("hinh");
 
                 }
-                vanBanAdapter = new VanBanAdapter(ListVanBanActivity.this, R.layout.activity_van_ban_item, arrayListVanBan, arrayListVanBan);
+                vanBanAdapter = new VanBanAdapter(getActivity(), R.layout.activity_van_ban_item, arrayListVanBan, arrayListVanBan);
                 vanBanAdapter.notifyDataSetChanged();
                 lvDanhSachHienThi.setAdapter(vanBanAdapter);
                 progressDialog.hide();
             } catch (Exception ex) {
                 progressDialog.hide();
-                Toast.makeText(ListVanBanActivity.this, "ERROR:" + ex.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "ERROR:" + ex.toString(), Toast.LENGTH_LONG).show();
 
             }
         }
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         DownLoad download = new DownLoad();
         download.execute();
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
     }
 }

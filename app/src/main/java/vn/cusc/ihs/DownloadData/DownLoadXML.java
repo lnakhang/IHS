@@ -1,20 +1,16 @@
 package vn.cusc.ihs.DownloadData;
 
-import android.util.Log;
-
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.xml.sax.InputSource;
 
-import java.io.InputStream;
+
 import java.net.URLConnection;
-import java.util.ArrayList;
+
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import vn.cusc.ihs.DownloadData.PhanTich_XML;
 
 
 /**

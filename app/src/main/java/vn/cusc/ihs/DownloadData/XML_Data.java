@@ -4,9 +4,9 @@ package vn.cusc.ihs.DownloadData;
  * Created by cmtien on 8/15/16.
  */
 public class XML_Data {
-    PhanTich_XML1 phanTich_xml1;
-    PhanTich_XML2 phanTich_xml2;
-    PhanTich_XML3 phanTich_xml3;
+    public static PhanTich_XML1 phanTich_xml1;
+    public static PhanTich_XML2 phanTich_xml2;
+    public static PhanTich_XML3 phanTich_xml3;
 
     public XML_Data() {
     }

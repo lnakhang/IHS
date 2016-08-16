@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import vn.cusc.ihs.DownloadData.XML.XMLBang1;
 import vn.cusc.ihs.DownloadData.XML.XMLBang2;
 import vn.cusc.ihs.DownloadData.XML.XMLBang3;
 
@@ -21,15 +22,44 @@ public class XuLyDuLieu {
     PhanTich_XML1 phanTich_xml1;
     PhanTich_XML2 phanTich_xml2;
     PhanTich_XML3 phanTich_xml3;
-    XML_Data sumReadXML = new XML_Data();
+    public XML_Data sumReadXML = new XML_Data();
     ParseBase64 parse;
+
+    ArrayList<XMLBang1> xmlBang1s;
+    ArrayList<XMLBang2> xmlBang2s;
+    ArrayList<XMLBang3> xmlBang3s;
+    public ArrayList<XMLBang3> getXmlBang3s() {
+        return xmlBang3s;
+    }
+
+    public void setXmlBang3s(ArrayList<XMLBang3> xmlBang3s) {
+        this.xmlBang3s = xmlBang3s;
+    }
+
+    public ArrayList<XMLBang1> getXmlBang1s() {
+        return xmlBang1s;
+    }
+
+    public void setXmlBang1s(ArrayList<XMLBang1> xmlBang1s) {
+        this.xmlBang1s = xmlBang1s;
+    }
+
+    public ArrayList<XMLBang2> getXmlBang2s() {
+        return xmlBang2s;
+    }
+
+    public void setXmlBang2s(ArrayList<XMLBang2> xmlBang2s) {
+        this.xmlBang2s = xmlBang2s;
+    }
+
+
 
     public XuLyDuLieu() {
         parse = new ParseBase64();
     }
 
     public void getXMLDetail(ArrayList<FileHoSo> fileHoSoArrayList) {
-         //= phanTich_xml.getFileHoSoList();
+        //= phanTich_xml.getFileHoSoList();
         if (fileHoSoArrayList != null && fileHoSoArrayList.size() > 0) {
             for (FileHoSo fileHoSo : fileHoSoArrayList) {
                 String loaiHoSo = fileHoSo.getLoaiHoSo();
@@ -92,7 +122,7 @@ public class XuLyDuLieu {
                         // tien hanh phan tich
                         parser.parse(src, phanTich_xml2);
 
-                        ArrayList<XMLBang2> dsChiTietThuoc = phanTich_xml2.getDSChiTietThuoc();
+                        xmlBang2s = phanTich_xml2.getDSChiTietThuoc();
                        /* for (XMLBang2 xmlBang2 : dsChiTietThuoc)
                         {
                             Log.d("MA_LK: ", xmlBang2.getMA_LK());
@@ -128,7 +158,7 @@ public class XuLyDuLieu {
                         // tien hanh phan tich
                         parser.parse(src, phanTich_xml3);
 
-                        ArrayList<XMLBang3> dsChiTietDVKT = phanTich_xml3.getDSChiTietDVKT();
+                        xmlBang3s = phanTich_xml3.getDSChiTietDVKT();
                         /*for (XMLBang3 xmlBang3 : dsChiTietDVKT) {
                             Log.d("MA_LK: ", xmlBang3.getMA_LK());
                             Log.d("STT: ", xmlBang3.getSTT());

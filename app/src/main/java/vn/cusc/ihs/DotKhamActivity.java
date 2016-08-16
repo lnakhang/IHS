@@ -1,10 +1,16 @@
 package vn.cusc.ihs;
 
+import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import org.xml.sax.InputSource;
@@ -29,28 +35,74 @@ import vn.cusc.ihs.DownloadData.XML.XMLBang2;
 import vn.cusc.ihs.DownloadData.XML.XMLBang3;
 import vn.cusc.ihs.DownloadData.XML_Data;
 import vn.cusc.ihs.DownloadData.XuLyDuLieu;
+import vn.cusc.ihs.ThongTinBenhNhan.ThongTinKhamBenh;
 
-public class DotKhamActivity extends AppCompatActivity {
+public class DotKhamActivity extends Fragment {
+    ProgressDialog progressDialog;
 
     DotKhamAdapter dotKhamAdapter;
+    ArrayList<FileHoSo> hoSo;
 
 
+    public DotKhamActivity(){}
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.activity_dot_kham, container, false);
+        new Down().execute();
+        return rootView;
+    }
+
+
+
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dot_kham);
+        new Down().execute();
 
-        dotKhamAdapter = new DotKhamAdapter(DotKhamActivity.this, null);
-        ((ListView) findViewById(R.id.lvDanhSachDotKham)).setOnClickListener(new View.OnClickListener() {
+
+
+
+        *//*((ListView) findViewById(R.id.lvDanhSachDotKham)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                DownLoadXML download = new DownLoadXML();
-                PhanTich_XML phanTich_xml = download.download("");
-                XuLyDuLieu xuLyDuLieu = new XuLyDuLieu();
-                xuLyDuLieu.getXMLDetail(phanTich_xml.getFileHoSoList());
+
             }
-        });
+        });*//*
+    }*/
+
+    class Down extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if(progressDialog == null){
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setIndeterminate(true);
+            }
+            progressDialog.setMessage("Vui lòng chờ giây lác!");
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            DownLoadXML download = new DownLoadXML();
+            hoSo = download.download("http://baocaoxml.somee.com/XML/201607140648_GD4930403800886_GiamDinhBHYT_324.XML").getFileHoSoList();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            XuLyDuLieu xuly = new XuLyDuLieu();
+            xuly.getXMLDetail(hoSo);
+            progressDialog.hide();
+            Intent i = new Intent(getActivity(), ThongTinKhamBenh.class);
+            startActivity(i);
+        }
     }
 
 }

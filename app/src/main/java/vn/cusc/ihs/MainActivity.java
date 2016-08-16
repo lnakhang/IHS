@@ -28,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ((Button)findViewById(R.id.btnLichSuKham)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, DotKhamActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 
 

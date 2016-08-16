@@ -8,6 +8,8 @@ import android.webkit.WebView;
 import vn.cusc.ihs.R;
 
 public class ViewVanBanActivity extends AppCompatActivity {
+
+
     WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

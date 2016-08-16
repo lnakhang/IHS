@@ -47,6 +47,7 @@
                     android:text="Họ và tên: " />
 
                 <TextView
+                    android:id="@+id/hotenBN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nguyễn Văn A" />
@@ -66,6 +67,7 @@
                     android:text="Giới tính: " />
 
                 <TextView
+                    android:id="@+id/gioiTinhBN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nam" />
@@ -85,6 +87,7 @@
                     android:text="Địa chỉ: " />
 
                 <TextView
+                    android:id="@+id/diaChiBN"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Số 1 Lý tự Trọng" />
@@ -105,6 +108,7 @@
                     android:text="Chẩn đoán: " />
 
                 <TextView
+                    android:id="@+id/chanDoan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cao huyết áp" />
@@ -124,6 +128,7 @@
                     android:text="Sổ thẻ BHYT: " />
 
                 <TextView
+                    android:id="@+id/soTheBHYT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="GD7 93 02 003 00212" />
@@ -143,6 +148,7 @@
                     android:text="Tổng số tiền phát sinh: " />
 
                 <TextView
+                    android:id="@+id/chiPhiPhatSinh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="152121đ" />
@@ -162,6 +168,7 @@
                     android:text="Số tiền phải đóng: " />
 
                 <TextView
+                    android:id="@+id/tienBNDong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="100000đ" />
@@ -181,6 +188,7 @@
                     android:text="Phần trăm bảo hiểm thanh toán: " />
 
                 <TextView
+                    android:id="@+id/phanTramThanhToan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="80%" />
@@ -197,6 +205,7 @@
         android:weightSum="2">
 
         <Button
+            android:id="@+id/btnXemChiDinh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
@@ -207,6 +216,7 @@
             android:textSize="15dp" />
 
         <Button
+            android:id="@+id/btnXemDonThuoc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"

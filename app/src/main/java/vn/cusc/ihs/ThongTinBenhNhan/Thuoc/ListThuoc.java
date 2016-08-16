@@ -7,19 +7,22 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import vn.cusc.ihs.DownloadData.XML.XMLBang2;
+import vn.cusc.ihs.DownloadData.XML_Data;
 import vn.cusc.ihs.R;
 
 public class ListThuoc extends AppCompatActivity {
     ThuocAdapter thuocAdapter;
     ArrayList<XMLBang2> lstThuoc = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_thuoc);
 
+        lstThuoc = XML_Data.phanTich_xml2.getDSChiTietThuoc();
 
         thuocAdapter = new ThuocAdapter(ListThuoc.this, lstThuoc);
-        ((ListView)findViewById(R.id.lvThuoc)).setAdapter(thuocAdapter);
+        ((ListView) findViewById(R.id.lvThuoc)).setAdapter(thuocAdapter);
 
     }
 }
