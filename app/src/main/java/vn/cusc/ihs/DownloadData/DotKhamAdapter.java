@@ -12,15 +12,16 @@ import java.util.ArrayList;
 
 import vn.cusc.ihs.DownloadData.XML.DotKham;
 import vn.cusc.ihs.R;
+import vn.cusc.ihs.clsDotKham;
 
 /**
  * Created by lnakhang on 8/3/2016.
  */
 public class DotKhamAdapter extends BaseAdapter {
     Context context;
-    ArrayList<DotKham> lstDotkham;
+    ArrayList<clsDotKham> lstDotkham;
 
-    public DotKhamAdapter(Context context, ArrayList<DotKham> lst) {
+    public DotKhamAdapter(Context context, ArrayList<clsDotKham> lst) {
         this.context = context;
         lstDotkham = lst;
 
@@ -55,8 +56,8 @@ public class DotKhamAdapter extends BaseAdapter {
         } else {
             one_skiarea = (oneDotKham) view.getTag();
         }
-        DotKham position = lstDotkham.get(i);
-        one_skiarea.tvNgayKham.setText(position.getNGAYVAOVIEN().toString());
+        clsDotKham position = lstDotkham.get(i);
+        one_skiarea.tvNgayKham.setText(position.getNgaykham().toString());
         return view;
     }
 
