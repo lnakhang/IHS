@@ -10,9 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.cusc.ihs.DownloadData.XML.DotKham;
 import vn.cusc.ihs.R;
-import vn.cusc.ihs.clsDotKham;
+import vn.cusc.ihs.DownloadData.XML.clsDotKham;
 
 /**
  * Created by lnakhang on 8/3/2016.
@@ -57,7 +56,12 @@ public class DotKhamAdapter extends BaseAdapter {
             one_skiarea = (oneDotKham) view.getTag();
         }
         clsDotKham position = lstDotkham.get(i);
-        one_skiarea.tvNgayKham.setText(position.getNgaykham().toString());
+
+        String nam = position.getNgaykham().substring(0,4);
+        String thang = position.getNgaykham().substring(4,6);
+        String ngay = position.getNgaykham().substring(6,8);
+        String ngayKham = nam +"/" + thang + "/" +ngay;
+        one_skiarea.tvNgayKham.setText(ngayKham + "");
         return view;
     }
 

@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import vn.cusc.ihs.DownloadData.PhanTich_XML1;
+import vn.cusc.ihs.DownloadData.XML.ThongTinKham;
 import vn.cusc.ihs.DownloadData.XML.XMLBang1;
 import vn.cusc.ihs.DownloadData.XML_Data;
 import vn.cusc.ihs.R;
@@ -17,7 +19,6 @@ import vn.cusc.ihs.ThongTinBenhNhan.Thuoc.ListThuoc;
 public class ThongTinKhamBenh extends AppCompatActivity {
 
     TextView hoten, diachi, gioitinh, chandoan, sotienphatsinh, benhnhandong, phantramthanhtoan, sotheBH;
-
 
 
     @Override
@@ -33,29 +34,36 @@ public class ThongTinKhamBenh extends AppCompatActivity {
         gioitinh.setText(bang1.getGIOI_TINH());
         diachi.setText(bang1.getDIA_CHI());
         chandoan.setText(bang1.getTEN_BENH());
-        sotienphatsinh.setText(bang1.getT_TONGCHI());
-        benhnhandong.setText(bang1.getT_BNTT());
-        phantramthanhtoan.setText(bang1.getMUC_HUONG());
+        sotienphatsinh.setText(bang1.getT_TONGCHI() + "Đ");
+        benhnhandong.setText(bang1.getT_BNTT() + "Đ");
+        phantramthanhtoan.setText(bang1.getMUC_HUONG() + "%");
         sotheBH.setText(bang1.getMA_THE());
 
 
-
-        ((Button)findViewById(R.id.btnXemChiDinh)).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.btnXemChiDinh)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ThongTinKhamBenh.this, ListChiDinh.class);
-                startActivity(i);
+
+                if (XML_Data.phanTich_xml3 != null) {
+                    Intent i = new Intent(ThongTinKhamBenh.this, ListChiDinh.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(ThongTinKhamBenh.this, "Bệnh nhân không có thông tin chỉ định.", Toast.LENGTH_LONG).show();
+                }
             }
         });
-        ((Button)findViewById(R.id.btnXemDonThuoc)).setOnClickListener(new View.OnClickListener() {
+        ((Button) findViewById(R.id.btnXemDonThuoc)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ThongTinKhamBenh.this, ListThuoc.class);
-                startActivity(i);
+                if (XML_Data.phanTich_xml2 != null) {
+                    Intent i = new Intent(ThongTinKhamBenh.this, ListThuoc.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(ThongTinKhamBenh.this, "Bệnh nhân không có thông tin thuốc.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
-
 
 
     void init() {

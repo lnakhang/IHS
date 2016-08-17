@@ -18,6 +18,7 @@ public class VanBanDetail extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_van_ban_detail);
         getSupportActionBar().hide();
+
         init();
         Intent intent = getIntent();
         String kyHieuVB = intent.getStringExtra("kyHieuVB");
@@ -75,5 +76,30 @@ public class VanBanDetail extends AppCompatActivity implements View.OnClickListe
       /*  Intent intent = new Intent(VanBanDetail.this, ListVanBanActivity.class);
         startActivity(intent);*/
         finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

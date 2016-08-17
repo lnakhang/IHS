@@ -1,4 +1,4 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.DownloadData.XML;
 
 /**
  * Created by lnakhang on 8/16/2016.

@@ -1,6 +1,6 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.Menu;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
@@ -15,9 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.cusc.ihs.ThongTinBenhNhan.DotKhamActivity;
+import vn.cusc.ihs.R;
 import vn.cusc.ihs.TimKiemVanBan.ListVanBanActivity;
 
 public class Menu extends AppCompatActivity {
@@ -96,7 +99,7 @@ public class Menu extends AppCompatActivity {
 
     /**
      * Slide menu item click listener
-     * */
+     */
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
         @Override
@@ -109,7 +112,7 @@ public class Menu extends AppCompatActivity {
 
     /**
      * Diplaying fragment view for selected nav drawer list item
-     * */
+     */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
@@ -175,7 +178,7 @@ public class Menu extends AppCompatActivity {
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        if(getSupportActionBar() != null) {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(mTitle);
         }
     }
@@ -197,5 +200,20 @@ public class Menu extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    private static final int TIME = 2000;
+    private long mBackPressed;
+
+    @Override
+    public void onBackPressed() {
+        if (mBackPressed + TIME > System.currentTimeMillis()) {
+            super.onBackPressed();
+            return;
+        } else {
+            Toast.makeText(Menu.this, "Back để thoát ứng dụng", Toast.LENGTH_SHORT).show();
+        }
+
+        mBackPressed = System.currentTimeMillis();
     }
 }

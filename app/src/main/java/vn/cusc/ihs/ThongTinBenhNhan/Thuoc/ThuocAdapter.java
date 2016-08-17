@@ -57,7 +57,7 @@ public class ThuocAdapter extends BaseAdapter {
             thuocItem = (ThuocItem) view.getTag();
         }
         XMLBang2 xml = lstThuoc.get(i);
-        thuocItem.tvStt.setText(xml.getSTT() + "");
+        thuocItem.tvStt.setText(i + 1 + "");
         thuocItem.tvTen.setText(xml.getTEN_THUOC() + "");
         thuocItem.tvSoLuong.setText(xml.getSO_LUONG() + "");
         thuocItem.tvCachDung.setText(xml.getLIEU_DUNG() + "");

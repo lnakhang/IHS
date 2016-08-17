@@ -1,13 +1,11 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.ThongTinBenhNhan;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,11 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-
-import java.io.InputStream;
-import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,27 +24,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
+import vn.cusc.ihs.DownloadData.Common;
 import vn.cusc.ihs.DownloadData.DotKhamAdapter;
 import vn.cusc.ihs.DownloadData.DownLoadXML;
 import vn.cusc.ihs.DownloadData.FileHoSo;
-import vn.cusc.ihs.DownloadData.ParseBase64;
-import vn.cusc.ihs.DownloadData.PhanTich_XML;
-import vn.cusc.ihs.DownloadData.PhanTich_XML1;
-import vn.cusc.ihs.DownloadData.PhanTich_XML2;
-import vn.cusc.ihs.DownloadData.PhanTich_XML3;
-import vn.cusc.ihs.DownloadData.XML.XMLBang2;
-import vn.cusc.ihs.DownloadData.XML.XMLBang3;
-import vn.cusc.ihs.DownloadData.XML_Data;
+import vn.cusc.ihs.DownloadData.XML.clsDotKham;
 import vn.cusc.ihs.DownloadData.XuLyDuLieu;
+import vn.cusc.ihs.R;
 import vn.cusc.ihs.ThongTinBenhNhan.ThongTinKhamBenh;
 
 public class DotKhamActivity extends Fragment {
     ProgressDialog progressDialog;
     Connection con;
-    String un, pass, db, ip;
     ArrayList<clsDotKham> arrDotKham = new ArrayList<>();
     ArrayList<FileHoSo> hoSo;
     public ListView lvDanhSachDotKham;
@@ -67,10 +51,6 @@ public class DotKhamActivity extends Fragment {
 
         final View rootView = inflater.inflate(R.layout.activity_dot_kham, container, false);
 
-        un = "baocaoxml";
-        pass = "lnakhang";
-        db = "BAOCAOXML";
-        ip = "BAOCAOXML.mssql.somee.com";
 
         lvDanhSachDotKham = (ListView) rootView.findViewById(R.id.lvDanhSachDotKham);
 
@@ -95,6 +75,27 @@ public class DotKhamActivity extends Fragment {
 
         //new Down().execute();
         return rootView;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     class Down extends AsyncTask<String, String, String> {
@@ -140,9 +141,9 @@ public class DotKhamActivity extends Fragment {
 
             try {
                 // Connect to database
-                con = connectionclass(un, pass, db, ip);
+                con = connectionclass(Common.username, Common.password, Common.dbName, Common.ip);
                 // Change below query according to your own database.
-                String query = "select * from dulieu where SOTHE_BHYT ='" + strings[0] + "'";
+                String query = Common.querySearchSoTheBHYT + strings[0] + "'";
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -179,9 +180,9 @@ public class DotKhamActivity extends Fragment {
                 adapter = new DotKhamAdapter(getActivity(), arrDotKham);
                 lvDanhSachDotKham.setAdapter(adapter);
                 progressDialog.hide();
-            }else
-            {
+            } else {
                 progressDialog.hide();
+                Toast.makeText(getActivity(), "Không tìm thấy Số thẻ BHYT. \nVui lòng kiểm tra lại!", Toast.LENGTH_LONG).show();
             }
         }
     }

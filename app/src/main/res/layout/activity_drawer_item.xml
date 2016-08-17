@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:background="@drawable/selector"
-    tools:context="vn.cusc.ihs.DrawerItem">
+    tools:context=".Menu.DrawerItem">
     <ImageView
         android:id="@+id/icon"
         android:layout_width="25dp"

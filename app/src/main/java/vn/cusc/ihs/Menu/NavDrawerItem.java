@@ -1,4 +1,4 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.Menu;
 
 /**
  * Created by lnakhang on 8/16/2016.

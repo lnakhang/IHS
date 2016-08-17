@@ -54,7 +54,7 @@ public class ChiDinhAdapter extends BaseAdapter {
             thuocItem = (ChiDinhItem) view.getTag();
         }
         XMLBang3 xml = lstChiDinh.get(i);
-        thuocItem.tvStt.setText(xml.getSTT() + "");
+        thuocItem.tvStt.setText(i + 1 + "");
         thuocItem.tvTen.setText(xml.getTEN_DICH_VU() + "");
         thuocItem.tvThanhTien.setText(xml.getTHANH_TIEN() + "");
         return view;

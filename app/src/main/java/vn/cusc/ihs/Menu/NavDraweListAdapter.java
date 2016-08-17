@@ -1,4 +1,4 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.Menu;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import vn.cusc.ihs.R;
 
 /**
  * Created by lnakhang on 8/16/2016.

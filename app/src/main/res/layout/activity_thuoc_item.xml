@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
+    android:layout_height="55dp"
     android:layout_margin="5dp"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:weightSum="2"
     tools:context="vn.cusc.ihs.ThongTinBenhNhan.Thuoc.ThuocItem">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="30dp">
     <TextView
         android:id="@+id/stt"
         android:layout_width="20dp"
@@ -28,18 +31,19 @@
 
     <TextView
         android:id="@+id/tvSoLuong"
-        android:layout_width="25dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="0"
         android:gravity="center"
         android:padding="2dp"
         android:text="10" />
-
+    </LinearLayout>
     <TextView
         android:id="@+id/tvCachDung"
         android:layout_width="match_parent"
+        android:layout_marginLeft="15dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="0"
         android:gravity="center_vertical"
         android:padding="2dp"
         android:text="Sáng 1 viên, Chiều 1 viên" />

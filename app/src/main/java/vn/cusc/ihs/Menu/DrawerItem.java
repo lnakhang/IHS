@@ -1,7 +1,9 @@
-package vn.cusc.ihs;
+package vn.cusc.ihs.Menu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import vn.cusc.ihs.R;
 
 public class DrawerItem extends AppCompatActivity {
 

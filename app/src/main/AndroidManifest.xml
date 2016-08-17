@@ -9,7 +9,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_local_hospital_black_48dp"
+        android:icon="@drawable/home"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -30,10 +30,10 @@
         <activity android:name=".ThongTinBenhNhan.Thuoc.ThuocItem" />
         <activity android:name=".ThongTinBenhNhan.Thuoc.ListThuoc" />
         <activity android:name=".ThongTinBenhNhan.ChiDinhCLS.ListChiDinh" />
-        <activity android:name=".Menu">
+        <activity android:name=".Menu.Menu">
 
         </activity>
-        <activity android:name=".DrawerItem">
+        <activity android:name=".Menu.DrawerItem">
 
         </activity>
     </application>
